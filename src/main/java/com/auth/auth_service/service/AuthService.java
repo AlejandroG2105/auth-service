@@ -8,6 +8,8 @@ import org.springframework.security.authentication.UsernamePasswordAuthenticatio
 import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Service;
 
+//Logica del Login, verificar credenciales y crear los JWT validos.
+
 @Service
 public class AuthService {
 

@@ -9,6 +9,8 @@ import org.springframework.stereotype.Service;
 import javax.crypto.SecretKey;
 import java.util.Date;
 
+//Crea los tokens JWT, usa la informacion y los valida.
+
 @Service
 public class JwtService {
 

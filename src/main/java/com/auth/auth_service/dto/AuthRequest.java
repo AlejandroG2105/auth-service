@@ -5,6 +5,8 @@ import jakarta.validation.constraints.Size;
 
 public class AuthRequest {
 
+    //Solo datos de login
+
     @NotBlank(message = "El nombre de usuario es obligatorio")
     @Size(min =4, max =50, message = "El nombre de usuario debe tener entre 4 y 5o caracteres")
     private String username;

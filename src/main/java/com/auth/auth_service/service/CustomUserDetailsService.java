@@ -12,6 +12,9 @@ import org.springframework.stereotype.Service;
 @Service
 @Primary
 @RequiredArgsConstructor
+
+//Busca el username y lo adapta a Spring Security recibe.
+
 public class CustomUserDetailsService implements UserDetailsService {
 
     private final UsuarioRepository usuarioRepository;

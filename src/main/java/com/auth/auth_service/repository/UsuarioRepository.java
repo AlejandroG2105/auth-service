@@ -5,6 +5,8 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 import java.util.Optional;
 
+//Se extiende JpaRepository para trabajar con las tablas de user.
+
 @Repository
 public interface UsuarioRepository extends JpaRepository<Usuario, Long> {
 

@@ -17,6 +17,9 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 
+// Se definen las rutas publicas y las de autenticacion. Al igual
+//que se configura autenticacion y codificador de password
+
 @Configuration
 @EnableWebSecurity
 @RequiredArgsConstructor
