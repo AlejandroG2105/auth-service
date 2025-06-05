@@ -13,6 +13,9 @@ import lombok.*;
 @AllArgsConstructor
 @Builder
 
+//Datos que van en la BD, esta mapeada con JPA, todos representado en tablas
+//en la BD
+
 public class Usuario {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

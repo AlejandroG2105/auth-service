@@ -8,6 +8,8 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 
+//Informacion para exponer del user.
+
 public class UsuarioDto {
 
     private String nombreUsuario;

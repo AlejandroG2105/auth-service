@@ -5,11 +5,10 @@ import com.auth.auth_service.service.UsuarioService;
 import lombok.RequiredArgsConstructor;
 import org.apache.coyote.Response;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.security.core.Authentication;
+
+// Se obtiene datos del usuario autenticado (Perfil).
 
 @RestController
 @RequestMapping("/api/user")
@@ -26,5 +25,22 @@ public class UserController {
         String username = authentication.getName();
         UsuarioDto usuarioDto = usuarioService.obtenerUsuarioPorUsername(username);
         return ResponseEntity.ok(usuarioDto);
+    }
+
+    @PutMapping("/update")
+    public ResponseEntity<String> updateUser(
+            Authentication authentication,
+            @RequestBody UsuarioDto usuarioDto
+    ){
+        String username = authentication.getName();
+        usuarioService.updateUser(username, usuarioDto);
+        return ResponseEntity.ok("Usuario actualizado");
+    }
+
+    @DeleteMapping("/delete")
+    public ResponseEntity<String> deleteUser(Authentication authentication){
+        String username = authentication.getName();
+        usuarioService.deleteUser(username);
+        return ResponseEntity.ok("Usuario eliminado");
     }
 }

@@ -19,6 +19,7 @@ public class AuthController {
 
     @Autowired
     private UsuarioService usuarioService;
+// Se manejan las rutas relacionadas con autenticacion.
 
     @PostMapping("/login")
     public ResponseEntity<AuthResponse> login(@Valid @RequestBody AuthRequest request) {

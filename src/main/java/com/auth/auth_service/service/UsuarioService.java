@@ -14,6 +14,8 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import com.auth.auth_service.dto.UsuarioDto;
 
+// Nuevo login de user, al igual que verificar si existe user y password.
+
 @Service
 @RequiredArgsConstructor
 public class UsuarioService implements UserDetailsService {
@@ -29,7 +31,7 @@ public class UsuarioService implements UserDetailsService {
         return User.builder()
                 .username(usuario.getUsername())
                 .password(usuario.getPassword())
-                .roles("USER") // Puedes ajustar los roles si tu modelo los incluye
+                .roles("USER")
                 .build();
     }
 
@@ -39,7 +41,24 @@ public class UsuarioService implements UserDetailsService {
 
         return new UsuarioDto(usuario.getUsername(), usuario.getEmail());
     }
-    
+
+    public void updateUser(String username, UsuarioDto usuarioDto) {
+        Usuario usuario = usuarioRepository.findByUsername(username)
+                .orElseThrow(() -> new UsernameNotFoundException("Usuario no encontrado"));
+
+        usuario.setUsername(usuarioDto.getNombreUsuario());
+        usuario.setEmail(usuarioDto.getEmail());
+
+        usuarioRepository.save(usuario);
+    }
+
+    public void deleteUser(String username) {
+        Usuario usuario = usuarioRepository.findByUsername(username)
+                .orElseThrow(() -> new UsernameNotFoundException("Usuario no encontrado"));
+
+        usuarioRepository.delete(usuario);
+    }
+
     public void registrarUsuario(RegistroRequest request) {
         if (usuarioRepository.existsByUsername(request.getUsername())) {
             throw new IllegalArgumentException("El nombre de usuario ya está en uso");
