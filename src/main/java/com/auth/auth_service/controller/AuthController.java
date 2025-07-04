@@ -21,6 +21,8 @@ public class AuthController {
     private UsuarioService usuarioService;
 // Se manejan las rutas relacionadas con autenticacion.
 
+    //Se definen las rutas relacionadas con autenticacion bajo el path base /api/auth
+
     @PostMapping("/login")
     public ResponseEntity<AuthResponse> login(@Valid @RequestBody AuthRequest request) {
         AuthResponse authResponse = authService.login(request);
